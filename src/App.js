@@ -4,8 +4,6 @@ import ReactTooltip from "react-tooltip";
 import AddLabel from "./AddLabel";
 import "./App.css";
 
-
-
 const INDIA_JSON = require("./india.topo.json");
 
 const PROJECTION_CONFIG = {
@@ -17,32 +15,36 @@ const DEFAULT_COLOR = "#EEE";
 
 const geographyStyle = {
   default: {
+    fill: "#EEE",
     outline: "none",
   },
   hover: {
-    fill: "green",
+    fill: "red",
     transition: "all 250ms",
     outline: "none",
   },
   pressed: {
     fill: "red",
-    outline: "none"
-  }
+    outline: "none",
+  },
   
 };
 
 function App() {
   const [tooltipContent, setTooltipContent] = useState("");
-  
-
+ 
+ 
   const onMouseEnter = (geo) => {
     return () => {
       setTooltipContent(`${geo.properties.name}`);
+      
     };
   };
 
   const onMouseLeave = () => {
     setTooltipContent("");
+   
+    
   };
 
   return (
@@ -72,11 +74,9 @@ function App() {
           }
         </Geographies>
       </ComposableMap>
-    <AddLabel/>
-     
+      <AddLabel />
     </div>
   );
 }
 
 export default App;
-
